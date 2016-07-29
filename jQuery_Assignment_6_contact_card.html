@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- CodingDojo Assignment WebFund: jQuery Assignment 6: Contact Card TE -->
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>CodingDojo Assignment Webfund: jQuery Assignment 6: Contact Card</title>
+   <meta name="description" content="This is created by Tom Eastman for Coding Dojo WebFund Track: jQuery Assignment 6: Contact Card">
+   <link rel="stylesheet" type="text/css" href="style_jquery_contact_card.css">
+   <script src= 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'>  
+   </script>
+   <script type="text/javascript">
+      $(document).ready(function(){
+        $("form").on('submit', function(){
+          var fName = $("#fName").val()
+          var lName = $("#lName").val()
+          var description = $("#description").val()
+          console.log(fName, lName, description)
+          var html = '<div class="card" side="front" desc='+ description +' fName='+ fName +' lName ='+ lName +'>' + fName + ' ' + lName + '<p>Click for Description</p></div>'
+          $("#cards").append(html)
+          return false
+        })
+      })
+    $(document).on('click', '.card', function(){
+      var description = $(this).attr('desc');
+      var fName = $(this).attr('fName');
+      var lName = $(this).attr('lName');
+      var side = $(this).attr('side')
+      if( side === 'front'){
+        var back = '<div class="card" side="back" desc='+ description +' fName='+ fName +' lName ='+ lName +'><p>' + description + '</p></div>'
+        $(this).replaceWith(back)
+      } else {
+          var front = '<div class="card" side="front" desc='+ description +' fName='+ fName +' lName ='+ lName +'>' + fName + ' ' + lName + '<p>Click for Description</p></div>'
+          $(this).replaceWith(front)
+      }
+    })
+  </script>
+</head>
+<body>
+<!-- <div id="container"> -->
+  <div id="form1">
+    <form action="#" method="Post">
+      <p>First Name: <input type="text" name="firstName" id="fName"></p>
+      <p>Last Name: <input type="text" name="lastName" id="lName"></p>
+      <p>Decription: <textarea id="description" rows="10" cols="20"></textarea></p>
+      <input type="submit" value="Add User">
+    </form>
+  </div>
+
+  <div id="cards">
+  </div>
+<!-- </div> -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
